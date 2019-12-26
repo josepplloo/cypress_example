@@ -1,8 +1,8 @@
 describe('Home data detail', () => {
   beforeEach(() => {
-    cy.visit('https://woloxbooksv3.firebaseapp.com/es/')
-    cy.get('#email').type('jose.garcia@wolox.co')
-    cy.get('#password').type('123456')
+    cy.visit(Cypress.env('booksUrl'))
+    cy.get('#email').type(Cypress.env('email'))
+    cy.get('#password').type(Cypress.env('password'))
     cy.get('#login').click()
     cy.get('#book_item').click()
   });

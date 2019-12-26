@@ -1,17 +1,17 @@
 describe('sing In', () => {
   beforeEach(() => {
-    cy.visit('https://woloxbooksv3.firebaseapp.com/es/')
+    cy.visit(Cypress.env('booksUrl'))
   });
 
   it('should be a successful sign In', () => {
-    cy.get('#email').type('jose.garcia@wolox.co')
-    cy.get('#password').type('123456')
+    cy.get('#email').type(Cypress.env('email'))
+    cy.get('#password').type(Cypress.env('password'))
     cy.get('#login').click()
   });
 
   it('should be a failed login', () => {
-    cy.get('#email').type('jose.garcia.garcia@wolox.co')
-    cy.get('#password').type('123456')
+    cy.get('#email').type(Cypress.env('email'))
+    cy.get('#password').type(Cypress.env('password'))
     cy.get('#login').click()
   });
 
