@@ -1,7 +1,3 @@
-/*
-TODO: 
-deberia de capturar los mensajes de error
-*/
 describe('signUp', () => {
   beforeEach(() => {
     cy.visit('https://woloxbooksv3.firebaseapp.com/es/')

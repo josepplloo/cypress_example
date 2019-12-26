@@ -1,11 +1,3 @@
-/*
-TODO: 
-deberia de capturar los mensajes de error
-deberia capturar la url en formato https://woloxbooksv3.firebaseapp.com/es/books/18
-afterEach () => implementarlo??
-
-*/
-
 describe('Home data detail', () => {
   beforeEach(() => {
     cy.visit('https://woloxbooksv3.firebaseapp.com/es/')
@@ -14,10 +6,15 @@ describe('Home data detail', () => {
     cy.get('#login').click()
     cy.get('#book_item').click()
   });
- 
+  afterEach(() => cy.get('#loggout').click())
+
   it('should have at least one', () => {
     cy.get('.genre').should('have.length', 1)
     cy.get('.sub-title').should('have.length', 3)
   });
+
+  it('shoud change the url path name', () => {
+    cy.location('pathname').should('eq', '/es/books/18')
+  })
   
 });
