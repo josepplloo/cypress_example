@@ -1,20 +1,25 @@
 describe('Home data detail', () => {
-  beforeEach(() => {
-    cy.visit(Cypress.env('booksUrl'))
-    cy.get('#email').type(Cypress.env('email'))
-    cy.get('#password').type(Cypress.env('password'))
-    cy.get('#login').click()
-    cy.get('#book_item').click()
-  });
-  afterEach(() => cy.get('#loggout').click())
+  const { logIn, loggout, books } = Cypress.env('appComponents');
+  const { booksUrl, email, password } = Cypress.env('appData');
+  const randomBook = Math.floor((Math.random() * 5) + 1);
 
-  it('should have at least one', () => {
+  beforeEach(() => {
+    cy.visit(booksUrl)
+    cy.get('input').eq(0).type(email)
+    cy.get('input').eq(1).type(password)
+    cy.get(logIn).click()
+    cy.get(books).eq(randomBook).click()
+  });
+  afterEach(() => cy.get(loggout).click());
+
+  it('should have a basic info ', () => {
     cy.get('.genre').should('have.length', 1)
     cy.get('.sub-title').should('have.length', 3)
   });
 
   it('shoud change the url path name', () => {
-    cy.location('pathname').should('eq', '/es/books/18')
-  })
-  
+    cy.location().should((loc) => {
+      expect(loc.pathname).to.match(/^\/\w+\/\w+\/\w+/)
+    });
+  });
 });

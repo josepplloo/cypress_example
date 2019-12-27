@@ -1,11 +1,18 @@
 {
   "projectId": "3so9j4",
   "env": {
-    "booksUrl": "https://woloxbooksv3.firebaseapp.com/es/",
-    "name": "Jose",
-    "lastname": "García",
-    "email": "jose.garcia@wolox.co",
-    "password": "123456"
-
+    "appData": {
+      "booksUrl": "https://woloxbooksv3.firebaseapp.com/es/",
+      "name": "Jose",
+      "lastname": "García",
+      "email": "jose.garcia@wolox.co",
+      "password": "123456"
+    },
+    "appComponents": {
+      "logIn": "button",
+      "singUp": "a",
+      "loggout": "#loggout",
+      "books": "app-book-card"
+    }
   }
 }
