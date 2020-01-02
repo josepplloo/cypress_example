@@ -2,11 +2,10 @@ export class WoloxBooks {
   constructor() {
     this.appData = Cypress.env('appData');
     this.appComponents = Cypress.env('appComponents');
-
   }
   navigate() {
     const { booksUrl } = this.appData;
-    cy.visit(booksUrl)
+    cy.visit(booksUrl);
   }
  
   handleSingUp() {
@@ -17,6 +16,13 @@ export class WoloxBooks {
   handleButton() {
     cy.get('button').click()
   }
+
+  handleLogIn({ email = this.appData.email, password = this.appData.password } = {}) {
+    cy.get('input').eq(0).type(email);
+    cy.get('input').eq(1).type(password);
+    this.handleButton();
+  }
+
 
   addName(name = this.appData.name) {
     cy.get('input').eq(0).type(name);

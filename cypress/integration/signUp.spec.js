@@ -9,11 +9,11 @@ describe('signUp', () => {
   });
 
   it('should be a successful sign Up', () => {
-    woloxBooks.addName()
-    woloxBooks.addLastName()
-    woloxBooks.addEmail()
-    woloxBooks.addPassword()
-    woloxBooks.handleButton()
+    woloxBooks.addName();
+    woloxBooks.addLastName();
+    woloxBooks.addEmail();
+    woloxBooks.addPassword();
+    woloxBooks.handleButton();
   });
 
   it('should need to be fill completely', () => {
@@ -21,34 +21,34 @@ describe('signUp', () => {
   });
 
   it('must have a value in name field', () => {
-    woloxBooks.addName('{enter}')
-    woloxBooks.addLastName()
-    woloxBooks.addEmail()
-    woloxBooks.addPassword()
-    cy.get('button').should('disabled')
+    woloxBooks.addName('{enter}');
+    woloxBooks.addLastName();
+    woloxBooks.addEmail();
+    woloxBooks.addPassword();
+    cy.get('button').should('disabled');
   });
 
   it('should have a valid name', () => {
-    woloxBooks.addName('12345')
-    woloxBooks.addLastName()
-    woloxBooks.addEmail()
-    woloxBooks.addPassword()
-    cy.get('button').should('disabled')
+    woloxBooks.addName('12345');
+    woloxBooks.addLastName();
+    woloxBooks.addEmail();
+    woloxBooks.addPassword();
+    cy.get('button').should('disabled');
   });
 
   it('should have a valid email', () => {
-    woloxBooks.addName()
-    woloxBooks.addLastName()
-    woloxBooks.addEmail('invalidMail.com')
-    woloxBooks.addPassword()
-    cy.get('button').should('disabled')
+    woloxBooks.addName();
+    woloxBooks.addLastName();
+    woloxBooks.addEmail('invalidMail.com');
+    woloxBooks.addPassword();
+    cy.get('button').should('disabled');
   });
 
   it('should have a strong password', () => {
-    woloxBooks.addName()
-    woloxBooks.addLastName()
-    woloxBooks.addEmail()
-    woloxBooks.addPassword('123')
-    cy.get('button').should('disabled')
+    woloxBooks.addName();
+    woloxBooks.addLastName();
+    woloxBooks.addEmail();
+    woloxBooks.addPassword('123');
+    cy.get('button').should('disabled');
   });
 })

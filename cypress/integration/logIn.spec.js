@@ -1,24 +1,23 @@
+import { WoloxBooks } from '../page-objects/wolox-books-page';
+
 describe('sing In', () => {
-  const { logIn } = Cypress.env('appComponents');
-  const { booksUrl, email, password } = Cypress.env('appData');
+  const woloxBooks = new WoloxBooks();
+
   beforeEach(() => {
-    cy.visit(booksUrl)
+    woloxBooks.navigate();
   });
 
   it('should be a successful sign In', () => {
-    cy.get('input').eq(0).type(email)
-    cy.get('input').eq(1).type(password)
-    cy.get(logIn).click()
+   woloxBooks.handleLogIn();
   });
 
   it('should be a failed login', () => {
-    cy.get('input').eq(0).type(email)
-    cy.get('input').eq(1).type(password)
-    cy.get(logIn).click()
+    woloxBooks.handleLogIn({ password: '654321' })
+    cy.get('button').should('disabled');
   });
 
   it('should not have an empty fields', () => {
-    cy.get(logIn).should('disabled');
+    cy.get('button').should('disabled');
   })
 
 });
